@@ -1,11 +1,11 @@
-package com.example.plantasMySQL
+package com.example.cochesMySQL
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class PlantasMySqlApplication
+class CochesMySqlApplication
 
 fun main(args: Array<String>) {
-	runApplication<PlantasMySqlApplication>(*args)
+	runApplication<CochesMySqlApplication>(*args)
 }

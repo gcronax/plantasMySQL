@@ -2,21 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Página Principal - Plantas</title>
+    <title>Página Principal - Coches</title>
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
 
 <div class="container mt-5 text-center">
-    <h1 class="mb-4">Bienvenido al Sistema de Plantas</h1>
+    <h1 class="mb-4">Bienvenido al Sistema de Coches</h1>
 
-    <div class="d-flex justify-content-center gap-3">
-        <!-- Botón para ver la lista de plantas -->
-        <a th:href="@{/plantas}" class="btn btn-primary btn-lg">Ver Plantas</a>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <!-- Botón para ver la lista de coches -->
+        <a th:href="@{/coches}" class="btn btn-primary btn-lg">Ver Coches</a>
 
-        <!-- Botón para importar datos -->
+        <!-- Botón para ver la lista de concesionarios -->
+        <a th:href="@{/concesionarios}" class="btn btn-info btn-lg">Ver Concesionarios</a>
+
+        <!-- Botón para importar datos de coches -->
         <a th:href="@{/importar}" class="btn btn-success btn-lg"
-           onclick="return confirm('¿Deseas importar los datos desde el CSV?')">Importar Datos</a>
+           onclick="return confirm('¿Deseas importar los datos desde el CSV de coches?')">Importar Coches</a>
     </div>
 
     <p class="mt-4 text-muted">Usa los botones para navegar por la aplicación</p>

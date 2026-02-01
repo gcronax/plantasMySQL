@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Coches</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+
+<body>
+
+<div class="container mt-5">
+    <h1>Coches</h1>
+
+    <h5 th:if="${coches.size() > 0}">Aquí tienes una tabla con todos los coches y las acciones que puedes hacer con ellos</h5>
+    <p th:unless="${coches.size() > 0}">No hay coches registrados en el sistema</p>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Foto</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="coche : ${coches}">
+            <td th:text="${coche.id_coche}">1</td>
+            <td th:text="${coche.marca}">Ford</td>
+            <td th:text="${coche.modelo}">Focus</td>
+            <td>
+                <img th:if="${coche.foto != null}" th:src="@{/images/{foto}(foto=${coche.foto})}" alt="Foto Coche" width="80">
+            </td>
+            <td>
+                <!-- Enlace a la página de detalles del coche -->
+                <a th:href="@{/coche/{id_coche}(id_coche=${coche.id_coche})}" class="btn btn-info btn-sm">Detalles</a>
+
+                <a th:href="@{/coches/editar/{id_coche}(id_coche=${coche.id_coche})}" class="btn btn-info btn-sm">Editar</a>
+
+                <!-- Borrar (en un entorno real usar POST/DELETE) -->
+                <a th:href="@{/coches/borrar/{id_coche}(id_coche=${coche.id_coche})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('¿Estás seguro de borrar este coche?')">Borrar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/coches/nuevo}" class="btn btn-primary mt-3">Agregar Nuevo Coche</a>
+
+</div>
+</body>
+</html>

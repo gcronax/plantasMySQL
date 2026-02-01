@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${titulo}">Formulario coche</title>
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+
+
+<body>
+<div class="container mt-5">
+    <h1 th:text="${titulo}">Formulario</h1>
+
+    <form th:action="@{/coches/guardar}" th:object="${coche}" method="post">
+
+        <!-- Campo oculto para el ID. Si es 0 se creará nuevo, si es > 0 se editará -->
+        <input type="hidden" th:field="*{id_coche}" />
+
+        <div class="mb-3">
+            <label class="form-label">Marca:</label>
+            <input type="text" class="form-control" th:field="*{marca}" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Modelo:</label>
+            <input type="text" class="form-control" th:field="*{modelo}" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nombre Foto:</label>
+            <input type="text" class="form-control" th:field="*{foto}" />
+        </div>
+
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a th:href="@{/coches}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

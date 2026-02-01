@@ -1,4 +1,4 @@
-package com.example.plantasMySQL
+package com.example.cochesMySQL
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
