@@ -2,7 +2,7 @@ package com.example.cochesMySQL.model
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "concesionario")
+@Table(name = "concesionarios")
 data class Concesionario(
 
     @Id
