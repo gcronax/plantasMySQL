@@ -30,7 +30,7 @@
             <td th:text="${coche.marca}">Ford</td>
             <td th:text="${coche.modelo}">Focus</td>
             <td>
-                <img th:if="${coche.foto != null}" th:src="@{/images/{foto}(foto=${coche.foto})}" alt="Foto Coche" width="80">
+                <img th:if="${coche.foto != null}" th:src="@{/fotos/{foto}(foto=${coche.foto})}" alt="Foto Coche" width="80">
             </td>
             <td>
                 <!-- Enlace a la página de detalles del coche -->
