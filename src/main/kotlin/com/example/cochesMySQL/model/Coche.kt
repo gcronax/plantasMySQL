@@ -17,5 +17,6 @@ data class Coche(
     var modelo: String = "",
 
     @Column
-    var foto: String? = null
+    var foto: String? = null,
+
 )

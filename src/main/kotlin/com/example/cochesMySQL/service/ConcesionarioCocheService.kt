@@ -4,6 +4,7 @@ import com.example.cochesMySQL.model.Concesionario
 import com.example.cochesMySQL.model.ConcesionarioCoche
 import com.example.cochesMySQL.model.ConcesionarioCocheId
 import com.example.cochesMySQL.model.Coche
+import com.example.cochesMySQL.model.PrecioCocheDTO
 import com.example.cochesMySQL.model.ConcesionarioConCochesDTO
 import com.example.cochesMySQL.repository.ConcesionarioCocheRepository
 import com.example.cochesMySQL.repository.CocheRepository
@@ -25,7 +26,7 @@ class ConcesionarioCocheService(
     fun obtenerCochesDeConcesionario(idConcesionario: Int): List<ConcesionarioCoche> =
         concesionarioCocheRepository.obtenerCochesDeConcesionario(idConcesionario)
 
-    fun guardar(idConcesionario: Int, idCoche: Int, cantidad: Int) {
+    fun guardar(idConcesionario: Int, idCoche: Int, precio: Int) {
         // 1. Buscamos las entidades (lanzará error si no existen)
         val concesionarioRef = concesionarioRepository.findById(idConcesionario).orElseThrow()
         val cocheRef = cocheRepository.findById(idCoche).orElseThrow()
@@ -38,7 +39,7 @@ class ConcesionarioCocheService(
             id = id,
             concesionario = concesionarioRef,
             coche = cocheRef,
-            cantidad = cantidad
+            precio = precio
         )
 
         concesionarioCocheRepository.save(nuevaRelacion)
@@ -54,26 +55,29 @@ class ConcesionarioCocheService(
                     concesionario.id_concesionario
                 )
 
-            val cochesDTO = relaciones.mapNotNull { rel ->
+            val PrecioCocheDTO = relaciones.mapNotNull { rel ->
                 val coche = rel.coche ?: return@mapNotNull null
 
-                Coche(
-                    id_coche = coche.id_coche,
-                    marca = coche.marca,
-                    modelo = coche.modelo,
-                    foto = coche.foto
+                PrecioCocheDTO(
+                    Coche(
+                        id_coche = coche.id_coche,
+                        marca = coche.marca,
+                        modelo = coche.modelo,
+                        foto = coche.foto
+                    ),
+                    precio = rel.precio
                 )
             }
 
-            val marcas = cochesDTO
-                .map { it.marca }
+            val marcas = PrecioCocheDTO
+                .map { it.coche.marca }
                 .distinct()
                 .sorted()
 
             ConcesionarioConCochesDTO(
                 id = concesionario.id_concesionario,
                 nombre = concesionario.nombre,
-                coches = cochesDTO,
+                coches = PrecioCocheDTO,
                 marcas = marcas
             )
         }
