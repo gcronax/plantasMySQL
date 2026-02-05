@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/concesionarios")
+@RequestMapping("/api/dealers")
 class ConcesionarioCocheRestController(
     private val concesionarioCocheService: ConcesionarioCocheService
 ) {
 
-    @GetMapping("/coches")
+    @GetMapping("/cars")
     fun getConcesionariosConCoches(): List<ConcesionarioConCochesDTO> {
         return concesionarioCocheService.obtenerConcesionariosConCoches()
     }
