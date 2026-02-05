@@ -11,8 +11,8 @@ data class Depreciacion(
     @Column(name = "id_depreciacion")
     var id_depreciacion: Int? = null,
 
-    @Column(nullable = false)
-    var coche_fk: Int? = null,
+    @Column(name = "cocheFk")
+    var cocheFk: Int? = null,
 
     @Column(name = "valor")
     var valores: List<Int> = emptyList()
