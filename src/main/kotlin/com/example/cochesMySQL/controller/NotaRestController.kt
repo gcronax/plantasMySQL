@@ -19,8 +19,8 @@ class NotaController(private val notaService: NotaService) {
         else ResponseEntity.notFound().build()
     }
 
-//    @GetMapping("/car/{id}")
-//    fun obtenerPorFk(@PathVariable id: Int):  List<Nota> = notaService.obtenerPorFk(id)
+    @GetMapping("/car/{id}")
+    fun obtenerPorFk(@PathVariable id: Int):  List<Nota> = notaService.obtenerPorFk(id)
 
 
     @PostMapping

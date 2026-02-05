@@ -11,7 +11,7 @@ class NotaService(private val repository: NotaRepository) {
 
     fun obtenerPorId(id: Int): Nota? = repository.findById(id).orElse(null)
 
-//    fun obtenerPorFk(coche_fk: Int): List<Nota> = repository.findAllByCoche_fk(coche_fk)
+    fun obtenerPorFk(cocheFk: Int): List<Nota> = repository.findAllByCocheFk(cocheFk)
 
     fun guardar(nota: Nota): Nota = repository.save(nota)
 

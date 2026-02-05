@@ -11,8 +11,8 @@ data class Nota(
     @Column(name = "id_nota")
     var id_nota: Int? = null,
 
-    @Column
-    var coche_fk: Int? = null,
+    @Column(name = "cocheFk")
+    var cocheFk: Int? = null,
 
     @Column(nullable = false)
     var texto: String? = null
