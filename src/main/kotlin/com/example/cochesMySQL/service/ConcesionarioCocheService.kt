@@ -70,7 +70,7 @@ class ConcesionarioCocheService(
             }
 
             val marcas = PrecioCocheDTO
-                .map { it.coche.marca }
+                .map { "https://gcronax.github.io/car-images/brands/"+it.coche.marca+".jpg" }
                 .distinct()
                 .sorted()
 
