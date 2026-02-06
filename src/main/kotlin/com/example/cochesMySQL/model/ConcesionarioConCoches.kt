@@ -1,8 +1,8 @@
 package com.example.cochesMySQL.model
 
-data class ConcesionarioConCochesDTO(
+data class ConcesionarioConCoches(
     val id: Int?,
     val nombre: String,
-    val coches: List<PrecioCocheDTO>,
+    val coches: List<PrecioCoche>,
     val marcas: List<String>
 )

@@ -1,6 +1,6 @@
 package com.example.cochesMySQL.model
 
-data class CocheNotasDTO (
+data class CocheNotas (
     val coche: Coche,
     val notas: List<Nota> = emptyList()
 )

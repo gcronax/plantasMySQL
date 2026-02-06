@@ -1,7 +1,7 @@
 package com.example.cochesMySQL.service
 
 import com.example.cochesMySQL.model.Coche
-import com.example.cochesMySQL.model.CocheNotasDTO
+import com.example.cochesMySQL.model.CocheNotas
 import com.example.cochesMySQL.repository.CocheRepository
 import com.example.cochesMySQL.repository.NotaRepository
 import org.springframework.stereotype.Service
@@ -10,7 +10,6 @@ import java.io.File
 import kotlin.collections.map
 import kotlin.io.readLines
 import kotlin.text.split
-import kotlin.text.toDouble
 
 
 @Service
@@ -32,12 +31,12 @@ class CocheService(
         }
     }
 
-    fun listarCochesConNotas(): List<CocheNotasDTO> {
+    fun listarCochesConNotas(): List<CocheNotas> {
         val coches = cocheRepository.findAll()
 
         return coches.map { coche ->
             val notas = notaRepository.findAllByCocheFk(coche.id_coche!!)
-            CocheNotasDTO(
+            CocheNotas(
                 coche = coche,
                 notas = notas
             )

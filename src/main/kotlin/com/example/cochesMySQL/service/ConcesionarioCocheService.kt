@@ -4,8 +4,8 @@ import com.example.cochesMySQL.model.Concesionario
 import com.example.cochesMySQL.model.ConcesionarioCoche
 import com.example.cochesMySQL.model.ConcesionarioCocheId
 import com.example.cochesMySQL.model.Coche
-import com.example.cochesMySQL.model.PrecioCocheDTO
-import com.example.cochesMySQL.model.ConcesionarioConCochesDTO
+import com.example.cochesMySQL.model.PrecioCoche
+import com.example.cochesMySQL.model.ConcesionarioConCoches
 import com.example.cochesMySQL.repository.ConcesionarioCocheRepository
 import com.example.cochesMySQL.repository.CocheRepository
 import com.example.cochesMySQL.repository.ConcesionarioRepository
@@ -44,7 +44,7 @@ class ConcesionarioCocheService(
 
         concesionarioCocheRepository.save(nuevaRelacion)
     }
-    fun obtenerConcesionariosConCoches(): List<ConcesionarioConCochesDTO> {
+    fun obtenerConcesionariosConCoches(): List<ConcesionarioConCoches> {
 
         val concesionarios = concesionarioRepository.findAll()
 
@@ -55,10 +55,10 @@ class ConcesionarioCocheService(
                     concesionario.id_concesionario
                 )
 
-            val PrecioCocheDTO = relaciones.mapNotNull { rel ->
+            val precioCoche = relaciones.mapNotNull { rel ->
                 val coche = rel.coche ?: return@mapNotNull null
 
-                PrecioCocheDTO(
+                PrecioCoche(
                     Coche(
                         id_coche = coche.id_coche,
                         marca = coche.marca,
@@ -69,15 +69,15 @@ class ConcesionarioCocheService(
                 )
             }
 
-            val marcas = PrecioCocheDTO
+            val marcas = precioCoche
                 .map { "https://gcronax.github.io/car-images/brands/"+it.coche.marca+".jpg" }
                 .distinct()
                 .sorted()
 
-            ConcesionarioConCochesDTO(
+            ConcesionarioConCoches(
                 id = concesionario.id_concesionario,
                 nombre = concesionario.nombre,
-                coches = PrecioCocheDTO,
+                coches = precioCoche,
                 marcas = marcas
             )
         }

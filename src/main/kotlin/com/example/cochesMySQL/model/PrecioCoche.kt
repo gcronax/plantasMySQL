@@ -1,6 +1,6 @@
 package com.example.cochesMySQL.model
 
-data class PrecioCocheDTO(
+data class PrecioCoche(
     val coche: Coche,
     val precio: Int?=null
 )
